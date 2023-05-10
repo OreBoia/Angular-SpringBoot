@@ -5,36 +5,30 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
   templateUrl: './prova.component.html',
   styleUrls: ['./prova.component.css']
 })
-export class ProvaComponent implements OnInit, AfterContentChecked, AfterContentInit, 
-    AfterViewChecked, AfterViewInit, DoCheck, OnDestroy{
+export class ProvaComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnDestroy{
   
-      cani = [
-        {nome:'rogero',
-        razza: 'golden',
-        descrizione: "The Shiba Inu is the smallest of the six original and distinct spitz"}
-      ]
+  cani = [
+    {nome:'pippo',
+    razza: 'golden',
+    descrizione: "The Shiba Inu is the smallest of the six original and distinct spitz"}
+  ]
 
-    constructor()
-    {
-      
-    }
+  isDisabled = true
 
-    ngAfterContentChecked(): void {
-    }
-    ngAfterContentInit(): void {
-    }
-    ngAfterViewChecked(): void {
-    }
-    ngAfterViewInit(): void {
-    }
-    ngDoCheck(): void {
-    }
-    ngOnDestroy(): void {
-    }
+  immagine1 = 'https://material.angular.io/assets/img/examples/shiba2.jpg'
 
-    ngOnInit(): void 
-    {
-      
-    }
-  
+  constructor(){}
+
+  ngOnInit(): void 
+  {
+    console.log("ngOnInit")
+    // setInterval(() => {this.isDisabled = !this.isDisabled}, 2000)
+  }
+
+  ngAfterContentChecked(): void {}
+  ngAfterContentInit(): void {}
+  ngAfterViewChecked(): void {}
+  ngAfterViewInit(): void {}
+  ngDoCheck(): void {}
+  ngOnDestroy(): void {}
 }

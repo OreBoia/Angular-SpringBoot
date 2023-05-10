@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular';
+  
+  onClick(e: any){console.log(e)}
+  onInput(event: Event){console.log((<HTMLInputElement>event.target).value)}
 }
