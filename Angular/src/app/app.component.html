@@ -1,8 +1,45 @@
 <!-- <app-prova></app-prova> -->
 <!-- \\\\\\\\\\\\\\\\\\\\\\EVENT BINDING\\\\\\\\\\\\\\\\\\\\\\ -->
-<button mat-raised-button color="primary" (click)="(onClick(this))">Primary</button>
+<!-- <button mat-raised-button color="primary" (click)="(onClick(this))">Primary</button>
 
 <mat-form-field class="example-full-width">
     <mat-label>Favorite food</mat-label>
     <input matInput placeholder="Ex. Pizza" (input)="onInput($event)">
+</mat-form-field> -->
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\2WAY BINDING\\\\\\\\\\\\\\\\\\\\\\ -->
+<!-- <button mat-raised-button color="primary" (click)="(onClick($event))">Primary</button>
+<mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" [(ngModel)]="title">
 </mat-form-field>
+<p>{{title}}</p> -->
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\Elementi Condizionali\\\\\\\\\\\\\\\\\\\\\\ -->
+
+<mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" [(ngModel)]="title">
+</mat-form-field>
+<p>{{title}}</p>
+<button mat-raised-button color="primary" (click)="(onClick($event))">Gioca</button>
+
+<!-- <p *ngIf="isVisible">Ciao sono un paragrafo</p> -->
+
+<div *ngIf="isVisible; then bloccoIF else bloccoelse"></div>
+<ng-template #bloccoIF>
+    <p>ciao IF</p>
+</ng-template>
+<ng-template #bloccoelse>
+    <p>ciao ELSE</p>
+</ng-template>
+
+<!-- <ul>
+    <li *ngFor="let persona of persone">{{persona.nome}} - {{persona.cognome}}</li>
+</ul> -->
+
+<p *ngFor="let persona of persone; index as i, count as c, first as isFirst, last as isLast, even as isEven, odd as isOdd"> 
+    <span  *ngIf="persona.isOnline">
+        <strong>{{persona.nome}}</strong> - {{persona.cognome}} - {{persona.isOnline}}
+    </span>
+</p>
