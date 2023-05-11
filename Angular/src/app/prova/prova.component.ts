@@ -1,4 +1,6 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-prova',
@@ -7,6 +9,11 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 })
 export class ProvaComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnDestroy{
   
+  @Input() data: any
+  @Output() mandaDatiEvento = new EventEmitter<string>()
+
+  
+
   cani = [
     {nome:'pippo',
     razza: 'golden',
@@ -17,11 +24,12 @@ export class ProvaComponent implements OnInit, AfterContentChecked, AfterContent
 
   immagine1 = 'https://material.angular.io/assets/img/examples/shiba2.jpg'
 
-  constructor(){}
+  constructor(){
+  }
 
   ngOnInit(): void 
   {
-    console.log("ngOnInit")
+    console.log(this.data)
     // setInterval(() => {this.isDisabled = !this.isDisabled}, 2000)
   }
 
@@ -31,4 +39,8 @@ export class ProvaComponent implements OnInit, AfterContentChecked, AfterContent
   ngAfterViewInit(): void {}
   ngDoCheck(): void {}
   ngOnDestroy(): void {}
+
+  MandaDati(){
+    this.mandaDatiEvento.emit(this.cani[0].nome)
+  }
 }

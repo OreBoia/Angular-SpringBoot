@@ -10,6 +10,8 @@ export class AppComponent {
 
   isVisible = true
 
+  numero = 3
+
   persone = [
     {nome: 'Luca', cognome: 'rossi', isOnline: true},
     {nome: 'Marco', cognome: 'Verdi', isOnline: false},
@@ -19,4 +21,9 @@ export class AppComponent {
 
   onClick(event: Event){this.title = 'HOCLICCATO'}
   onInput(event: Event){this.title = (<HTMLInputElement>event.target).value}
+
+  onDataReceived(value: string)
+  {
+    console.log(value)
+  }
 }

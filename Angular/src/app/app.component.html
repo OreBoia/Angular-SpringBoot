@@ -1,4 +1,4 @@
-<!-- <app-prova></app-prova> -->
+
 <!-- \\\\\\\\\\\\\\\\\\\\\\EVENT BINDING\\\\\\\\\\\\\\\\\\\\\\ -->
 <!-- <button mat-raised-button color="primary" (click)="(onClick(this))">Primary</button>
 
@@ -17,29 +17,60 @@
 
 <!-- \\\\\\\\\\\\\\\\\\\\\\Elementi Condizionali\\\\\\\\\\\\\\\\\\\\\\ -->
 
-<mat-form-field class="example-full-width">
+<!-- <mat-form-field class="example-full-width">
     <mat-label>Favorite food</mat-label>
     <input matInput placeholder="Ex. Pizza" [(ngModel)]="title">
 </mat-form-field>
 <p>{{title}}</p>
-<button mat-raised-button color="primary" (click)="(onClick($event))">Gioca</button>
+<p>{{title}}</p>
+<button mat-raised-button color="primary" (click)="(onClick($event))">Gioca</button> -->
 
 <!-- <p *ngIf="isVisible">Ciao sono un paragrafo</p> -->
-
+<!-- 
 <div *ngIf="isVisible; then bloccoIF else bloccoelse"></div>
 <ng-template #bloccoIF>
     <p>ciao IF</p>
 </ng-template>
 <ng-template #bloccoelse>
     <p>ciao ELSE</p>
-</ng-template>
+</ng-template> -->
 
 <!-- <ul>
     <li *ngFor="let persona of persone">{{persona.nome}} - {{persona.cognome}}</li>
 </ul> -->
 
-<p *ngFor="let persona of persone; index as i, count as c, first as isFirst, last as isLast, even as isEven, odd as isOdd"> 
+<!-- <p *ngFor="let persona of persone; index as i, count as c, first as isFirst, last as isLast, even as isEven, odd as isOdd"> 
     <span  *ngIf="persona.isOnline">
         <strong>{{persona.nome}}</strong> - {{persona.cognome}} - {{persona.isOnline}}
     </span>
 </p>
+
+<div [ngSwitch]="numero">
+    <p *ngSwitchCase="1">1</p>
+    <p *ngSwitchCase="2">2</p>
+    <p *ngSwitchCase="3">3</p>
+    <p *ngSwitchCase="4">4</p>
+    <p *ngSwitchDefault>10</p>
+</div>
+
+<ul>
+    <li *ngFor="let persona of persone">
+        <div class="cerchio"  [ngStyle]="{background: persona.isOnline ? 'green' : 'red'}"></div>
+        <p>{{persona.nome}} - {{persona.cognome}}</p>
+    </li>
+</ul>
+-->
+<!-- <app-prova [data]="persone"></app-prova>
+
+<ul>
+    <li *ngFor="let persona of persone">
+        <div class="cerchio"  [ngClass]="{'cerchioVerde border': persona.isOnline, 'cerchioRosso': !persona.isOnline}"></div>
+        <p>{{persona.nome}} - {{persona.cognome}}</p>
+    </li>
+</ul>
+
+<app-prova [data]="persone"></app-prova> -->
+
+<app-prova (mandaDatiEvento)="onDataReceived($event)"></app-prova>
+
+
