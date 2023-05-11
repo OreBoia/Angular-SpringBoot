@@ -11,10 +11,18 @@ import { MatSliderModule } from '@angular/material/slider'
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+import { MenuCompComponent } from './menu-comp/menu-comp.component';
+import { InputManagerComponent } from './input-manager/input-manager.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuCompComponent,
+    InputManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,10 @@ import {MatInputModule} from '@angular/material/input';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
