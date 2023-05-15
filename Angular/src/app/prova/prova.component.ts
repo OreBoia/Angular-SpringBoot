@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
 
@@ -7,7 +7,7 @@ import { AppComponent } from '../app.component';
   templateUrl: './prova.component.html',
   styleUrls: ['./prova.component.css']
 })
-export class ProvaComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnDestroy{
+export class ProvaComponent implements OnChanges, OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnDestroy{
   
   @Input() data: any
   @Output() mandaDatiEvento = new EventEmitter<string>()
@@ -25,6 +25,11 @@ export class ProvaComponent implements OnInit, AfterContentChecked, AfterContent
   immagine1 = 'https://material.angular.io/assets/img/examples/shiba2.jpg'
 
   constructor(){
+  }
+
+  ngOnChanges(changes: SimpleChanges): void 
+  {
+      console.log(changes)
   }
 
   ngOnInit(): void 

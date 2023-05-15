@@ -59,18 +59,28 @@
         <p>{{persona.nome}} - {{persona.cognome}}</p>
     </li>
 </ul>
+-->
 
-<app-prova [data]="persone"></app-prova>
-
-<ul>
+<!-- <app-prova [data]="persone"></app-prova> -->
+<!-- <ul>
     <li *ngFor="let persona of persone">
         <div class="cerchio"  [ngClass]="{'cerchioVerde border': persona.isOnline, 'cerchioRosso': !persona.isOnline}"></div>
         <p>{{persona.nome}} - {{persona.cognome}}</p>
     </li>
 </ul>
 
-<app-prova [data]="persone"></app-prova>
+<app-prova [data]="persone"></app-prova> -->
 
-<app-prova (mandaDatiEvento)="onDataReceived($event)"></app-prova>  -->
+<!-- \\\\\\\\\\\\\\\\\\\\\\PARENT TO CHILD\\\\\\\\\\\\\\\\\\\ -->
+<!-- <app-prova [data]="persone"></app-prova> -->
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\CHILD TO PARENT\\\\\\\\\\\\\\\\\\\\\\ -->
+<!-- <app-prova (mandaDatiEvento)="onDataReceived($event)"></app-prova>   -->
+
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\Variabili Template\\\\\\\\\\\\\\\\\\\\\\ -->
+
+<input #inputSaluti value="ciao">
+
 
 

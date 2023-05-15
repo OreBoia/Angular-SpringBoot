@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit{
+
+  @ViewChild('inputSaluti') valoreInput!: ElementRef
+  
   title = 'Angular'
 
   isVisible = true
@@ -18,8 +21,21 @@ export class AppComponent {
     {nome: 'Anna', cognome: 'neri', isOnline: false},
     {nome: 'pippo', cognome: 'paperino', isOnline: true}]
   
+  valore = "ciao"
+
+  
+  ngOnInit(): void {
+    console.log('ngOnInit')
+    console.log(this.valoreInput)
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit')
+    console.log(this.valoreInput)
+  }
 
   onClick(event: Event){this.title = 'HOCLICCATO'}
+
   onInput(event: Event){this.title = (<HTMLInputElement>event.target).value}
 
   onDataReceived(value: string)
