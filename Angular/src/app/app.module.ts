@@ -11,12 +11,15 @@ import { MatSliderModule } from '@angular/material/slider'
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { HighlightDirective } from './dir/highlight/highlight.directive';
+import { TestServiceService } from './serv/test-service.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProvaComponent
+    ProvaComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     FormsModule
   ],
-  providers: [],
+  providers:[TestServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

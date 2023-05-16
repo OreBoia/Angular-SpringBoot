@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { TestServiceService } from './serv/test-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,13 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 })
 export class AppComponent implements OnInit, AfterViewInit{
 
-  @ViewChild('inputSaluti') valoreInput!: ElementRef
+  @ViewChild('inputSaluti') valoreInput!: ElementRef<HTMLInputElement>
   
   title = 'Angular'
 
   isVisible = true
 
-  numero = 3
+  numero = 3.163453
 
   persone = [
     {nome: 'Luca', cognome: 'rossi', isOnline: true},
@@ -23,15 +24,25 @@ export class AppComponent implements OnInit, AfterViewInit{
   
   valore = "ciao"
 
+  colore: string = ''
+
+  today = Date.now()
   
+  constructor(private testService: TestServiceService)
+  {
+
+  }
+
   ngOnInit(): void {
     console.log('ngOnInit')
     console.log(this.valoreInput)
+
+    console.log('APPCOMPONENT ', this.testService.persone)
   }
 
   ngAfterViewInit(): void {
     console.log('ngAfterViewInit')
-    console.log(this.valoreInput)
+    console.log(this.valoreInput.nativeElement.value)
   }
 
   onClick(event: Event){this.title = 'HOCLICCATO'}
@@ -41,5 +52,15 @@ export class AppComponent implements OnInit, AfterViewInit{
   onDataReceived(value: string)
   {
     console.log(value)
+  }
+
+  onClickVariableTemplate()
+  {
+    console.log(this.valoreInput.nativeElement.value)
+  }
+
+  cambiaColoreEvidenziatore(coloreEv: string)
+  {
+    this.colore = coloreEv
   }
 }

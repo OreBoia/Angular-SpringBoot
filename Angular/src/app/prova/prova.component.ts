@@ -1,6 +1,7 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
+import { TestServiceService } from '../serv/test-service.service';
 
 @Component({
   selector: 'app-prova',
@@ -12,8 +13,6 @@ export class ProvaComponent implements OnChanges, OnInit, AfterContentChecked, A
   @Input() data: any
   @Output() mandaDatiEvento = new EventEmitter<string>()
 
-  
-
   cani = [
     {nome:'pippo',
     razza: 'golden',
@@ -24,7 +23,9 @@ export class ProvaComponent implements OnChanges, OnInit, AfterContentChecked, A
 
   immagine1 = 'https://material.angular.io/assets/img/examples/shiba2.jpg'
 
-  constructor(){
+  constructor(private testService: TestServiceService)
+  {
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void 
@@ -34,8 +35,11 @@ export class ProvaComponent implements OnChanges, OnInit, AfterContentChecked, A
 
   ngOnInit(): void 
   {
-    console.log(this.data)
+    // console.log(this.data)
     // setInterval(() => {this.isDisabled = !this.isDisabled}, 2000)
+    this.testService.persone[0].nome = 'test'
+    console.log('PROVA COMP ', this.testService.persone)
+
   }
 
   ngAfterContentChecked(): void {}
