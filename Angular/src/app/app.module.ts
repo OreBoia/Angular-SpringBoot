@@ -13,13 +13,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { HighlightDirective } from './dir/highlight/highlight.directive';
 import { TestServiceService } from './serv/test-service.service';
+import { AboutComponent } from './comp/about/about.component';
+import { ContactComponent } from './comp/contact/contact.component';
+import { HomeComponent } from './comp/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProvaComponent,
-    HighlightDirective
+    HighlightDirective,
+    AboutComponent,
+    ContactComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
