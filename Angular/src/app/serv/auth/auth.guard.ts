@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Injectable, inject } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
@@ -47,6 +47,10 @@ export class AuthGuard {
     return this.authService.IsRoleAdmin()
   }
   
+}
+
+export const AuthGuardConst: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
+  return inject(AuthGuard).canActivate(next, state);
 }
 
 // @Injectable({
