@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit(): void {
     console.log('ngAfterViewInit')
-    console.log(this.valoreInput.nativeElement.value)
+    // console.log(this.valoreInput.nativeElement.value)
   }
 
   onClick(event: Event){this.title = 'HOCLICCATO'}

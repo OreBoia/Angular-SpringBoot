@@ -8,10 +8,10 @@ export class TestServiceService {
   constructor() { }
 
   persone = [
-    {nome: 'MARIO', cognome: 'rossi', isOnline: true},
-    {nome: 'Mffefsefarco', cognome: 'Verdi', isOnline: false},
-    {nome: 'Annsfefa', cognome: 'neri', isOnline: false},
-    {nome: 'pifsefppo', cognome: 'paperino', isOnline: true}]
+    {nome: 'MARIO', cognome: 'rossi', isOnline: true, colore: 'blue'},
+    {nome: 'Mffefsefarco', cognome: 'Verdi', isOnline: false, colore: 'green'},
+    {nome: 'Annsfefa', cognome: 'neri', isOnline: false, colore: 'yellow'},
+    {nome: 'pifsefppo', cognome: 'paperino', isOnline: true, colore: 'purple'}]
 
   
   GetPersona(ind: number)

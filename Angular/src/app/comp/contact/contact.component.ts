@@ -13,6 +13,8 @@ export class ContactComponent implements OnInit
 
   isProfile:boolean = false
 
+  isFound:boolean = false
+
   constructor(private serviceTest: TestServiceService, private route: ActivatedRoute)
   {
 
@@ -20,11 +22,23 @@ export class ContactComponent implements OnInit
 
   ngOnInit(): void 
   {
+    // if(this.route.snapshot.paramMap.get('id'))
+    // {
+      // this.isProfile = true
+      // this.persone = this.serviceTest.GetPersona(parseInt(this.route.snapshot.paramMap.get('id')!))
+      
+      // if(this.persone.length > 0){this.isFound = true}
+    // }
     this.persone = this.serviceTest.GetPersone()
+    // else
+    // {
+    //   this.isProfile = false
+    //   this.persone = this.serviceTest.GetPersone()
+    // }
 
-    this.isProfile = !this.route.snapshot.paramMap.get('id') ? false : true
-
-    console.log(this.isProfile) 
-    console.log(this.route.snapshot.paramMap.get('id')) 
+    console.log("ID", this.route.snapshot.paramMap.get('id'))
+    // console.log("isProfile", this.isProfile)
+    // console.log("isFound", this.isFound)
+    console.log(this.persone)
   }
 }

@@ -16,6 +16,8 @@ import { TestServiceService } from './serv/test-service.service';
 import { AboutComponent } from './comp/about/about.component';
 import { ContactComponent } from './comp/contact/contact.component';
 import { HomeComponent } from './comp/home/home.component';
+import { UserComponent } from './comp/user/user.component';
+import { NotfoundComponent } from './comp/notfound/notfound.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { HomeComponent } from './comp/home/home.component';
     HighlightDirective,
     AboutComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

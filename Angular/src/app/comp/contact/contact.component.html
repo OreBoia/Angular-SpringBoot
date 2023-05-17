@@ -1,10 +1,18 @@
-<p>LISTA CONTATTI</p>
+<div>
+    <p>LISTA CONTATTI</p>
 
-<ng-template *ngIf="!isProfile; else profiloContatto">
-    <div *ngFor="let persona of persone">
-        <p> {{persona.nome}} - {{persona.cognome}}</p>
+    <!-- <div *ngIf="!isProfile"> -->
+        <!-- <p *ngIf="isFound">ID FOUND</p> -->
+    <div>
+        <div *ngFor="let persona of persone; index as i">
+            <a routerLink="/contact/{{i}}"><p> {{i}} - {{persona.nome}} - {{persona.cognome}}</p></a>
+        </div>
     </div>
-</ng-template>
-<ng-template #profiloContatto>
-    <p>Profilo di Qwertyy</p>
-</ng-template>
+</div>
+<!-- </div> -->
+<!-- <ng-template #profiloContatto>
+    <app-user [persona]="persone"></app-user>
+</ng-template> -->
+
+<router-outlet></router-outlet>
+

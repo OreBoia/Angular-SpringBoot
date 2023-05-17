@@ -4,11 +4,18 @@ import { ProvaComponent } from './prova/prova.component';
 import { AboutComponent } from './comp/about/about.component';
 import { ContactComponent } from './comp/contact/contact.component';
 import { HomeComponent } from './comp/home/home.component';
+import { UserComponent } from './comp/user/user.component';
+import { NotfoundComponent } from './comp/notfound/notfound.component';
 
 const routes: Routes = 
 [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: '/homepage'
+  },
+  {
+    path: 'homepage',
     component: HomeComponent
   },
   {
@@ -17,12 +24,21 @@ const routes: Routes =
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent, 
+    children: [
+      {path: ':id', component: UserComponent}
+    ]
   },
   {
-    path: 'contact/:id',
-    component: ContactComponent
+    path: "404", component: NotfoundComponent
+  },
+  {
+    path: '**', redirectTo: '/404' //qualsiasi cosa prende come redirect (mettere sempre per ultimo)
   }
+  // {
+  //   path: 'contact/:id',
+  //   component: ContactComponent
+  // }
 ];
 
 @NgModule({
