@@ -7,6 +7,7 @@ import { HomeComponent } from './comp/home/home.component';
 import { UserComponent } from './comp/user/user.component';
 import { NotfoundComponent } from './comp/notfound/notfound.component';
 import { AuthGuard } from './serv/auth/auth.guard';
+import { AuthGuardConst } from './serv/auth/auth.service';
 
 const routes: Routes = 
 [
@@ -26,7 +27,7 @@ const routes: Routes =
   {
     path: 'contact',
     component: ContactComponent, 
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardConst],
     canActivateChild: [AuthGuard],
     children: [
       {path: ':id', component: UserComponent}

@@ -28,11 +28,11 @@ export class AuthGuard {
   //   return this.authService.IsAuthenticated();
   // }
 
-  canActivate(route: ActivatedRouteSnapshot,
-              state: RouterStateSnapshot): boolean
-  {
-    return this.authService.IsAuthenticated()
-  }
+  // canActivate(route: ActivatedRouteSnapshot,
+  //             state: RouterStateSnapshot): boolean
+  // {
+  //   return this.authService.IsAuthenticated()
+  // }
 
   //NEW VERSION 2
 
@@ -49,9 +49,10 @@ export class AuthGuard {
   
 }
 
-export const AuthGuardConst: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
-  return inject(AuthGuard).canActivate(next, state);
-}
+//NEW VERSION 3
+// export const AuthGuardConst: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
+//   return inject(AuthGuard).canActivate(next, state);
+// }
 
 // @Injectable({
 //   providedIn: 'root'
