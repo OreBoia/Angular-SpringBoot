@@ -28,7 +28,8 @@ export class AuthGuard {
   //   return this.authService.IsAuthenticated();
   // }
 
-  canActivate(): boolean
+  canActivate(route: ActivatedRouteSnapshot,
+              state: RouterStateSnapshot): boolean
   {
     return this.authService.IsAuthenticated()
   }
