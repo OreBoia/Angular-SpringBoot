@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Observer, Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +9,26 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy{
 
-
   subscription: any;
+
+  obs!: Observable<any>
+  subs!: Subscription;
 
   constructor(){}
 
   ngOnInit(): void 
   {
-    // this.subscription = new Observable((observer) => {
-    //   let count = 0
-    //   setInterval(() => {
-    //     observer.next(count)
-    //     count++
-    //   }, 1000)
-    // }).subscribe(numero => {
-    //   console.log(numero)
-    // })
+    this.obs = new Observable((observer) => {
+      let count = 0
+      setInterval(() => {
+        observer.next(count)
+        count++
+      }, 1000)
+    })
+
+    this.subs = this.obs.subscribe(numero => {
+      console.log(numero)
+    })
   }
 
   onSubmit(form: NgForm) 
@@ -34,6 +38,8 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void 
   {
-    // this.subscription.unsubscribe()
+    this.subscription.unsubscribe()
+
+    this.subs.unsubscribe()
   }
 }
