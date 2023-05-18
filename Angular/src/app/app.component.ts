@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TestServiceService } from './serv/test-service.service';
+import { Observable, interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -34,10 +35,12 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit')
-    console.log(this.valoreInput)
+    // console.log('ngOnInit')
+    // console.log(this.valoreInput)
 
-    console.log('APPCOMPONENT ', this.testService.persone)
+    // console.log('APPCOMPONENT ', this.testService.persone)
+    // interval(1000).subscribe(numero => {console.log(numero)})
+
   }
 
   ngAfterViewInit(): void {

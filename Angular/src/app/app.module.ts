@@ -18,6 +18,9 @@ import { ContactComponent } from './comp/contact/contact.component';
 import { HomeComponent } from './comp/home/home.component';
 import { UserComponent } from './comp/user/user.component';
 import { NotfoundComponent } from './comp/notfound/notfound.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { NotfoundComponent } from './comp/notfound/notfound.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers:[TestServiceService],
   bootstrap: [AppComponent]
