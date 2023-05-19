@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Observable, Observer, Subscriber, Subscription } from 'rxjs';
+import { FirebaseService } from 'src/app/serv/firebase/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -9,36 +10,57 @@ import { Observable, Observer, Subscriber, Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy{
 
-  subscription: any;
+  // @ViewChild('homeform') homeform!: NgForm
 
   obs!: Observable<any>
   subs!: Subscription;
 
-  constructor(){}
+  homeform!: FormGroup
+
+  constructor(private firebase: FirebaseService){}
 
   ngOnInit(): void 
   {
-    this.obs = new Observable((observer) => {
-      let count = 0
-      setInterval(() => {
-        observer.next(count)
-        count++
-      }, 1000)
-    })
+    //OBSERVER
+    // this.obs = new Observable((observer) => {
+    //   let count = 0
+    //   setInterval(() => {
+    //     observer.next(count)
+    //     count++
+    //   }, 1000)
+    // })
 
-    this.subs = this.obs.subscribe(numero => {
-      console.log(numero)
-    })
+    // this.subs = this.obs.subscribe(numero => {
+    //   console.log(numero)
+    // })
+
+   this.homeform = new FormGroup({
+      nome: new FormControl('luca', Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      colore: new FormControl()
+   })
+
+  //  this.firebase.insertPersona('https://angular-419c7-default-rtdb.europe-west1.firebasedatabase.app/persone.json', 
+  //                               {nome: 'luca', email: 'luca@email.com'}).subscribe(data => {
+  //                                 console.log(data)
+  //                               })
   }
 
-  onSubmit(form: NgForm) 
+  onSubmit() 
   {
-    console.log(form)
+    // console.log(form)
+    console.log(this.homeform)
+
+    this.firebase.insertPersona('https://angular-419c7-default-rtdb.europe-west1.firebasedatabase.app/persone.json', 
+                                {nome: this.homeform.get('nome')?.value, email: this.homeform.get('email')?.value}).subscribe(data => {
+                                  console.log(data)
+                                })
+
   }
 
   ngOnDestroy(): void 
   {
-    this.subscription.unsubscribe()
+    // this.subscription.unsubscribe()
 
     this.subs.unsubscribe()
   }
