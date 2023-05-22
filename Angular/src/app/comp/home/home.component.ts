@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Observable, Observer, Subscriber, Subscription } from 'rxjs';
-import { FirebaseService } from 'src/app/serv/firebase/firebase.service';
+import { FirebaseService, Item } from 'src/app/serv/firebase/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit, OnDestroy{
   subs!: Subscription;
 
   homeform!: FormGroup
+
+  persone!: any[]
 
   constructor(private firebase: FirebaseService){}
 
@@ -51,10 +53,16 @@ export class HomeComponent implements OnInit, OnDestroy{
     // console.log(form)
     console.log(this.homeform)
 
-    this.firebase.insertPersona('https://angular-419c7-default-rtdb.europe-west1.firebasedatabase.app/persone.json', 
-                                {nome: this.homeform.get('nome')?.value, email: this.homeform.get('email')?.value}).subscribe(data => {
-                                  console.log(data)
-                                })
+    // this.firebase.insertPersona('https://angular-419c7-default-rtdb.europe-west1.firebasedatabase.app/persone.json', 
+    //                             {nome: this.homeform.get('nome')?.value, email: this.homeform.get('email')?.value}).subscribe(data => {
+    //                               console.log(data)
+    //                             })
+    this.firebase.getPersona('https://angular-419c7-default-rtdb.europe-west1.firebasedatabase.app/persone.json', 'luca').subscribe(
+      (data: any) => 
+      {
+          this.persone = Object.keys(data).map((key) => {return data[key]})
+          console.log(this.persone[0].email)
+      })
 
   }
 
