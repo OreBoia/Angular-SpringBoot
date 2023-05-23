@@ -1,0 +1,7 @@
+<p>book-list works!</p>
+
+<div>
+    <ul>
+        <li *ngFor="let book of bookList">{{book.id}} - <a routerLink="/bookList/{{book.id}}">{{book.title}}</a> - {{book.rating}}</li>
+    </ul>
+</div>
