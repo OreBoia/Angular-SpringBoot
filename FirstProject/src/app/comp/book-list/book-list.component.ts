@@ -11,11 +11,23 @@ export class BookListComponent implements OnInit{
 
   bookList!: Book[]
 
+  titleToSearch: string = ''
+
+  foundBook: Book = {title: 'NO FOUND', id:'NO FOUND',plot:'NO FOUND',rating: 0}
+
+
   constructor(private bookService: BookServiceService, private route: ActivatedRoute){}
  
   ngOnInit(): void 
   {
     this.bookList = this.bookService.getBooks()
+  }
+
+  onClick()
+  {
+
+    this.bookList.forEach((book: Book) => {book.title == this.titleToSearch ?  this.foundBook = book: this.foundBook})
+  
   }
 
 }

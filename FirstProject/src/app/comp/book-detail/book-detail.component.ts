@@ -9,7 +9,7 @@ import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.
 })
 export class BookDetailComponent implements OnInit{
 
-  id!: number;
+  id!: any;
   book!: Book;
 
   constructor(private bookService: BookServiceService, private route: ActivatedRoute)
@@ -18,18 +18,15 @@ export class BookDetailComponent implements OnInit{
   }
 
   ngOnInit(): void 
-  {
-    
-    this.id = +this.route.snapshot.paramMap.get('id')!
-
-    console.log('ID' + this.id)
-
+  {  
     this.route.paramMap.subscribe((params: ParamMap) => 
     {
 
-      this.id = +params.get('id')!
+      this.id = params.get('id')!
 
       this.book = this.bookService.getBook(this.id)
+
+      console.log(this.book)
       
     })
   }

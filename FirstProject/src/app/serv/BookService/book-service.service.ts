@@ -16,10 +16,11 @@ export class BookServiceService{
     return this.bookList 
   }
 
-  getBook(id: number): Book
+  getBook(id: any): Book
   {
     let foundBook: Book = {title: 'NO FOUND', id:'NO FOUND',plot:'NO FOUND',rating: 0}
-    this.bookList.forEach((book: Book) => {book.id == id ?  foundBook = book: null})
+
+    this.bookList.forEach((book: Book) => {book.id == id ?  foundBook = book: foundBook})
 
     return foundBook
   }

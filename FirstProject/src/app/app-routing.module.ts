@@ -19,12 +19,12 @@ const routes: Routes =
       {path: ':id', component: BookDetailComponent}
     ]
   },
-  {
-    path: "404", component: NotfoundComponent
-  },
-  {
-    path: '**', redirectTo: '/404' //qualsiasi cosa prende come redirect (mettere sempre per ultimo)
-  }
+  // {
+  //   path: "404", component: NotfoundComponent
+  // },
+  // {
+  //   path: '**', redirectTo: '/404' //qualsiasi cosa prende come redirect (mettere sempre per ultimo)
+  // }
 ];
 
 @NgModule({

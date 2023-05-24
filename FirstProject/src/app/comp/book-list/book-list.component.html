@@ -2,6 +2,13 @@
 
 <div>
     <ul>
-        <li *ngFor="let book of bookList">{{book.id}} - <a routerLink="/bookList/{{book.id}}">{{book.title}}</a> - {{book.rating}}</li>
+        <li *ngFor="let book of bookList">{{book.id}} - <a routerLink="{{book.id}}">{{book.title}}</a> - {{book.rating}}</li>
     </ul>
 </div>
+<div>
+    <mat-label>nome</mat-label>
+    <input matInput type="name" name="title" [(ngModel)]="titleToSearch">
+    <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
+</div>
+<p>BOOK SEARCHED IS {{foundBook.title}}</p>
+<router-outlet></router-outlet>
