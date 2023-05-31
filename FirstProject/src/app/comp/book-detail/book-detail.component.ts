@@ -24,7 +24,7 @@ export class BookDetailComponent implements OnInit{
 
       this.id = params.get('id')!
 
-      this.book = this.bookService.getBook(this.id)
+      this.book = this.bookService.getBookById(this.id)
 
       console.log(this.book)
       

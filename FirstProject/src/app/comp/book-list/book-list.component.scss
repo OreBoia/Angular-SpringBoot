@@ -1,0 +1,44 @@
+/* Styling for mat-list-option elements */
+/* Styling for mat-list-option elements */
+mat-list-option {
+
+    max-width: 100%;
+    max-height: 30px;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+/* Styling for 'a' elements */
+mat-list-option a {
+    
+    color: #007bff;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* Styling for the grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 16px;
+    margin: 16px;
+  }
+  
+  /* Styling for the grid items */
+  .grid-item {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+  }
+  
+
+  
+  

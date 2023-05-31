@@ -18,6 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotfoundComponent } from './comp/notfound/notfound.component';
 import { BookDetailComponent } from './comp/book-detail/book-detail.component';
+import {MatListModule} from '@angular/material/list';
+
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { BookDetailComponent } from './comp/book-detail/book-detail.component';
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule
   ],
   providers: [BookServiceService],
   bootstrap: [AppComponent]

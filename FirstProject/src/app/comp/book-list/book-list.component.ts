@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.service';
 
 @Component({
@@ -13,10 +13,12 @@ export class BookListComponent implements OnInit{
 
   titleToSearch: string = ''
 
-  foundBook: Book = {title: 'NO FOUND', id:'NO FOUND',plot:'NO FOUND',rating: 0}
+  foundBook: Book = {title: 'NO FOUND', id:'NO FOUND', plot:'NO FOUND', rating: 0}
 
 
-  constructor(private bookService: BookServiceService, private route: ActivatedRoute){}
+  constructor(private bookService: BookServiceService, 
+              private route: ActivatedRoute,
+              private router: Router){}
  
   ngOnInit(): void 
   {
@@ -25,9 +27,8 @@ export class BookListComponent implements OnInit{
 
   onClick()
   {
-
-    this.bookList.forEach((book: Book) => {book.title == this.titleToSearch ?  this.foundBook = book: this.foundBook})
-  
-  }
-
+    this.foundBook = this.bookService.getBookByTitle(this.titleToSearch)
+    console.log(this.foundBook)
+    this.router.navigate(['/booklist', this.foundBook.id])
+  }      
 }

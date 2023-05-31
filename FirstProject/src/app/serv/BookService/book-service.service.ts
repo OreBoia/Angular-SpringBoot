@@ -16,14 +16,40 @@ export class BookServiceService{
     return this.bookList 
   }
 
-  getBook(id: any): Book
+  getBookById(id: any): Book 
   {
-    let foundBook: Book = {title: 'NO FOUND', id:'NO FOUND',plot:'NO FOUND',rating: 0}
-
-    this.bookList.forEach((book: Book) => {book.id == id ?  foundBook = book: foundBook})
-
-    return foundBook
+    const notFoundBook: Book = {title: 'NOT FOUND', id: 'NOT FOUND', plot: 'NOT FOUND', rating: 0};
+    let foundBook: Book = notFoundBook;
+  
+    for (const book of this.bookList) 
+    {
+      if (book.id == id) 
+      {
+        foundBook = book;
+        break;
+      }
+    }
+  
+    return foundBook;
   }
+
+  getBookByTitle(title: any): Book 
+  {
+    const notFoundBook: Book = {title: 'NOT FOUND', id: 'NOT FOUND', plot: 'NOT FOUND', rating: 0};
+    let foundBook: Book = notFoundBook;
+  
+    for (const book of this.bookList) 
+    {
+      if (book.title == title) 
+      {
+        foundBook = book;
+        break;
+      }
+    }
+  
+    return foundBook;
+  }
+  
 }
 
 export class Book
