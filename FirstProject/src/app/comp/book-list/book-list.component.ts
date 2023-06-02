@@ -13,13 +13,14 @@ export class BookListComponent implements OnInit{
 
   titleToSearch: string = ''
 
-  foundBook: Book = {title: 'NO FOUND', id:'NO FOUND', plot:'NO FOUND', rating: 0}
-
+  selectedBooks: Book[] = []
 
   constructor(private bookService: BookServiceService, 
               private route: ActivatedRoute,
               private router: Router){}
- 
+    
+  foundBook: Book = this.bookService.defaultBook;
+
   ngOnInit(): void 
   {
     this.bookList = this.bookService.getBooks()
@@ -28,7 +29,7 @@ export class BookListComponent implements OnInit{
   onClick()
   {
     this.foundBook = this.bookService.getBookByTitle(this.titleToSearch)
-    console.log(this.foundBook)
+
     this.router.navigate(['/booklist', this.foundBook.id])
   }      
 }

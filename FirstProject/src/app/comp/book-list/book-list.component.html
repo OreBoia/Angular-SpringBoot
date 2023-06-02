@@ -9,26 +9,26 @@
     <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
 </div>
 <p>BOOK SEARCHED IS {{foundBook.title}}</p> -->
+<div class="serach-bar">
+  <mat-label>Title</mat-label>
+  <input matInput type="name" name="title" [(ngModel)]="titleToSearch">
+  <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
+</div>
 
 <div class="grid-container">
-    <div class="grid-item">
-        <mat-selection-list #booklist>
-            <mat-list-option *ngFor="let book of bookList" value="{{book.title}}">
-                <a routerLink="{{book.id}}">{{book.title}}</a> - {{book.id}} - {{book.rating}}
-            </mat-list-option>
-        </mat-selection-list>
-    </div>
-    <div class="grid-item">
-        <p *ngFor="let book of booklist.selectedOptions.selected; let i = index">
-            Options selected: {{book.value}}
-        </p>
-    </div>
-    <div class="grid-item">
-        <mat-label>Title</mat-label>
-        <input matInput type="name" name="title" [(ngModel)]="titleToSearch">
-        <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
-    </div>
+
+  <div class="grid-item">
+    <mat-selection-list [(ngModel)]="selectedBooks">
+      <mat-list-option *ngFor="let book of bookList" [value]="book">
+        <a routerLink="{{ book.id }}">{{ book.title }}</a> - {{ book.id }} - {{ book.rating }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+
+    <!-- <div class="grid-item">
+      <p *ngFor="let book of selectedBooks">{{book.title}}</p>
+    </div> -->
+
     <div class="grid-item"><router-outlet></router-outlet></div>
-    <div class="grid-item">Item 5</div>
-    <div class="grid-item">Item 6</div>
+
 </div>

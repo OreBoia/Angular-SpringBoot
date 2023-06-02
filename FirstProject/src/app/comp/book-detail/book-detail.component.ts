@@ -9,25 +9,19 @@ import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.
 })
 export class BookDetailComponent implements OnInit{
 
-  id!: any;
   book!: Book;
 
-  constructor(private bookService: BookServiceService, private route: ActivatedRoute)
-  {
 
-  }
+  constructor(private bookService: BookServiceService, private route: ActivatedRoute){}
 
   ngOnInit(): void 
-  {  
-    this.route.paramMap.subscribe((params: ParamMap) => 
-    {
+  {
+    this.route.paramMap.subscribe((params: ParamMap) => {
 
-      this.id = params.get('id')!
+      const bookId = params.get('id');
 
-      this.book = this.bookService.getBookById(this.id)
+      this.book = this.bookService.getBookById(bookId);
 
-      console.log(this.book)
-      
-    })
+    });
   }
 }

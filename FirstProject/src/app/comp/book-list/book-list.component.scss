@@ -1,10 +1,18 @@
-/* Styling for mat-list-option elements */
+$background-color: #202324;
+$text-color-booklist: #007bff;
+$text-color-booklist-a: #048573;
+
+body {
+    background-color: $background-color;
+}
+
 /* Styling for mat-list-option elements */
 mat-list-option {
 
     max-width: 100%;
     max-height: 30px;
     padding: 8px;
+    color: $text-color-booklist;
     cursor: pointer;
 
     &:hover {
@@ -15,7 +23,7 @@ mat-list-option {
 /* Styling for 'a' elements */
 mat-list-option a {
     
-    color: #007bff;
+    color: $text-color-booklist-a;
     text-decoration: none;
 
     &:hover {
@@ -26,19 +34,33 @@ mat-list-option a {
 /* Styling for the grid container */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: 1fr ;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
     margin: 16px;
-  }
-  
-  /* Styling for the grid items */
-  .grid-item {
+}
+
+/* Styling for the grid items */
+.grid-item {
     background-color: #f0f0f0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 16px;
+}
+
+.serach-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    // add any other styles here
   }
   
+mat-label {
+    margin-right: 8px;
+}
 
-  
-  
+.serach-bar button {
+    margin-left: 8px;
+    background-color: #007bff;
+}
