@@ -1,6 +1,8 @@
 $background-color: #202324;
 $text-color-booklist: #007bff;
 $text-color-booklist-a: #048573;
+$grid-item-background-color: #2b2f31;
+$search-bar-background-color: #3b3b3b;
 
 body {
     background-color: $background-color;
@@ -16,7 +18,7 @@ mat-list-option {
     cursor: pointer;
 
     &:hover {
-        background-color: #f0f0f0;
+        background-color: #c0c0c0;
     }
 }
 
@@ -35,14 +37,14 @@ mat-list-option a {
 .grid-container {
     display: grid;
     grid-template-rows: 1fr ;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 16px;
     margin: 16px;
 }
 
 /* Styling for the grid items */
 .grid-item {
-    background-color: #f0f0f0;
+    background-color: $grid-item-background-color;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 16px;
@@ -52,7 +54,7 @@ mat-list-option a {
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
     // add any other styles here
   }
   
@@ -63,4 +65,9 @@ mat-label {
 .serach-bar button {
     margin-left: 8px;
     background-color: #007bff;
+}
+
+input[name="search"] {
+    background-color: $search-bar-background-color;
+    color: #f0f0f0;
 }

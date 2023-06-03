@@ -1,5 +1,10 @@
+$text-color-title: white;
+$text-color-content: white;
+
 mat-card-content{
-    color: black;
+    color: $text-color-content;
 }
+
 mat-card-header{
-    color: black;}
+    color: $text-color-title;
+}

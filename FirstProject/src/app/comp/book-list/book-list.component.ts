@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Event, Router } from '@angular/router';
 import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.service';
 
 @Component({
@@ -14,6 +14,9 @@ export class BookListComponent implements OnInit{
   titleToSearch: string = ''
 
   selectedBooks: Book[] = []
+
+  selectedBook: number = 0;
+  totalPrice: number = 0;
 
   constructor(private bookService: BookServiceService, 
               private route: ActivatedRoute,
@@ -32,4 +35,17 @@ export class BookListComponent implements OnInit{
 
     this.router.navigate(['/booklist', this.foundBook.id])
   }      
+
+  updateTotalPrice(price : number, event: boolean) {
+    
+    if(event)
+    {
+      this.totalPrice += price;
+    }
+    else
+    {
+      this.totalPrice -= price;
+    }
+     // multiply by 1 to convert from string to number
+  }
 }

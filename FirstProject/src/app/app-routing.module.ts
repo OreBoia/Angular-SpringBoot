@@ -9,10 +9,6 @@ import { BookDetailComponent } from './comp/book-detail/book-detail.component';
 const routes: Routes = 
 [
   {
-    path: '',
-    component: AppComponent
-  },
-  {
     path: 'booklist',
     component: BookListComponent,
     children: [

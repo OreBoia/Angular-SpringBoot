@@ -11,24 +11,31 @@
 <p>BOOK SEARCHED IS {{foundBook.title}}</p> -->
 <div class="serach-bar">
   <mat-label>Title</mat-label>
-  <input matInput type="name" name="title" [(ngModel)]="titleToSearch">
+  <input matInput type="name" name="search" [(ngModel)]="titleToSearch" (keydown)="onClick()">
   <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
 </div>
 
 <div class="grid-container">
 
   <div class="grid-item">
-    <mat-selection-list [(ngModel)]="selectedBooks">
-      <mat-list-option *ngFor="let book of bookList" [value]="book">
+    <mat-selection-list [(ngModel)]="selectedBooks" >
+      <mat-list-option *ngFor="let book of bookList" [value]="book" (selectedChange)="(updateTotalPrice(book.price, $event))">
         <a routerLink="{{ book.id }}">{{ book.title }}</a> - {{ book.id }} - {{ book.rating }}
       </mat-list-option>
     </mat-selection-list>
   </div>
 
-    <!-- <div class="grid-item">
-      <p *ngFor="let book of selectedBooks">{{book.title}}</p>
-    </div> -->
+  <div class="grid-item"><router-outlet></router-outlet></div>
 
-    <div class="grid-item"><router-outlet></router-outlet></div>
+  <div class="grid-item">
+    <p>Cart</p>
+    <div *ngFor="let book of selectedBooks">
+        {{ book.title }} - {{ book.price }}
+    </div>
+    <!-- a function to calculate the total price of the selected books -->
+    <p>Total price: {{totalPrice}}</p>
+
+    
+  </div>
 
 </div>
