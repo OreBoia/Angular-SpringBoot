@@ -1,4 +1,5 @@
-import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
+import { EventEmitter, Injectable, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,9 @@ export class BookServiceService implements OnChanges{
     price: 0};
   
   booksInCart: Book[] = [];
+  totalPrice: number = 0;
+
+  totalPriceChanged = new Subject<number>();
 
   constructor() { }
 
@@ -64,6 +68,29 @@ export class BookServiceService implements OnChanges{
     }
   
     return foundBook;
+  }
+
+  updateCartList(book: Book, event: boolean): void
+  {
+    if(event)
+    {
+      this.totalPrice += book.price;
+      this.booksInCart.push(book)
+    }
+    else
+    {
+      this.totalPrice -= book.price;
+      this.booksInCart.splice(this.booksInCart.indexOf(book), 1)
+    }
+
+    console.log(this.booksInCart)
+    console.log(this.totalPrice)
+    this.setTotalPrice(this.totalPrice);
+  }
+  
+  setTotalPrice(newTotalPrice: number) {
+    this.totalPrice = newTotalPrice;
+    this.totalPriceChanged.next(this.totalPrice);
   }
   
 }

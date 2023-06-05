@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Event, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss']
 })
-export class BookListComponent implements OnInit, OnChanges{
+export class BookListComponent implements OnInit, OnChanges, OnDestroy{
 
   bookList!: Book[]
 
@@ -18,25 +19,36 @@ export class BookListComponent implements OnInit, OnChanges{
   @Output() selectedBooksEmitter = new EventEmitter<Book[]>();
   @Input() selectedBooksInput: Book[] = []
 
-
   totalPrice: number = 0;
-
+  private subscription!: Subscription;
+  
   constructor(private bookService: BookServiceService, 
               private route: ActivatedRoute,
               private router: Router){}
   
-    
   foundBook: Book = this.bookService.defaultBook;
 
   ngOnInit(): void 
   {
     this.bookList = this.bookService.getBooks()
+
+    this.subscription = this.bookService.totalPriceChanged.subscribe(
+      (newTotalPrice: number) => {
+        this.totalPrice = newTotalPrice;
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void 
   {
     
   }
+
+  ngOnDestroy(): void 
+  {
+    this.subscription.unsubscribe()
+  }
+  
 
   onClick()
   {
@@ -47,23 +59,10 @@ export class BookListComponent implements OnInit, OnChanges{
 
   updateTotalPrice(book : Book, event: boolean) {
     
-    if(event)
-    {
-      this.totalPrice += book.price;
-      this.bookService.booksInCart.push(book)
-    }
-    else
-    {
-      this.totalPrice -= book.price;
-      this.bookService.booksInCart.splice(this.bookService.booksInCart.indexOf(book), 1)
-    }
+    this.bookService.updateCartList(book, event)
 
-    console.log(this.bookService.booksInCart)
-    console.log(this.selectedBooks)
+    // this.totalPrice = this.bookService.totalPrice
+   
   }
 
-  //emit event to parent component
-  emitSelectedBooks(): void {
-    this.selectedBooksEmitter.emit(this.selectedBooks);
-  }
 }

@@ -32,7 +32,7 @@ export class BookDetailComponent implements OnInit{
     // If the book doesn't exist, add it to the cart
     if (!existingBook) 
     {
-      this.bookService.booksInCart.push(book);
+      this.bookService.updateCartList(book, true);
       console.log("Added book to cart");
     }
     else
