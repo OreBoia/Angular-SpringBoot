@@ -19,7 +19,7 @@
 
   <div class="grid-item">
     <mat-selection-list [(ngModel)]="selectedBooks" >
-      <mat-list-option *ngFor="let book of bookList" [value]="book" (selectedChange)="(updateTotalPrice(book.price, $event))">
+      <mat-list-option *ngFor="let book of bookList" [value]="book" (selectedChange)="(updateTotalPrice(book, $event))">
         <a routerLink="{{ book.id }}">{{ book.title }}</a> - {{ book.id }} - {{ book.rating }}
       </mat-list-option>
     </mat-selection-list>
@@ -34,7 +34,6 @@
     </div>
     <!-- a function to calculate the total price of the selected books -->
     <p>Total price: {{totalPrice}}</p>
-
     
   </div>
 

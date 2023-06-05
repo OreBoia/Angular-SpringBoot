@@ -10,7 +10,7 @@ import { Book, BookServiceService } from 'src/app/serv/BookService/book-service.
 export class BookDetailComponent implements OnInit{
 
   book!: Book;
-
+  recivedBook!: Book;
 
   constructor(private bookService: BookServiceService, private route: ActivatedRoute){}
 
@@ -23,5 +23,21 @@ export class BookDetailComponent implements OnInit{
       this.book = this.bookService.getBookById(bookId);
 
     });
+  }
+
+  addBookToCart(book: Book)
+  {
+    const existingBook = this.bookService.booksInCart.find(b => b.id === book.id);
+
+    // If the book doesn't exist, add it to the cart
+    if (!existingBook) 
+    {
+      this.bookService.booksInCart.push(book);
+      console.log("Added book to cart");
+    }
+    else
+    {
+      console.log("Book already in cart");
+    }
   }
 }

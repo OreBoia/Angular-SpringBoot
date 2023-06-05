@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title-group>
@@ -9,4 +11,7 @@
     <mat-card-content>
         Price: {{book.price}} euro
     </mat-card-content>
+    <button mat-raised-button color="primary" type="submit" style="background-color: #007bff; margin-top: 8px;" (click)="addBookToCart(book)">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add_shopping_cart"></mat-icon>
+    </button>
 </mat-card>

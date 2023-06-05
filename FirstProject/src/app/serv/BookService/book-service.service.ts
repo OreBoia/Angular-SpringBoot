@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookServiceService{
+export class BookServiceService implements OnChanges{
   
   bookList: Book[] = [
     {title: 'Title', id: '123abc', plot: 'PLOT', rating: 5, authors: 'AUTHORS', price: 10},
@@ -11,14 +11,21 @@ export class BookServiceService{
     {title: 'Berserk', id: '768ghi', plot: 'guts go burserk', rating: 10, authors: 'Kentaro Miura', price: 20},]
 
   defaultBook: Book = {
-    title: 'NO FOUND', 
-    id:'NO FOUND', 
-    plot:'NO FOUND', 
+    title: 'NOT FOUND', 
+    id:'NOT FOUND', 
+    plot:'NOT FOUND', 
     rating: 0, 
-    authors: 'NO FOUND', 
+    authors: 'NOT FOUND', 
     price: 0};
+  
+  booksInCart: Book[] = [];
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void 
+  {
+    
+  }
 
   getBooks(): Book[] 
   {
