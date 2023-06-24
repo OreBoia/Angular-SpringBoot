@@ -9,18 +9,27 @@ import { BookDetailComponent } from './comp/book-detail/book-detail.component';
 const routes: Routes = 
 [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/booklist'
+  },
+  {
     path: 'booklist',
     component: BookListComponent,
     children: [
       {path: ':id', component: BookDetailComponent}
     ]
   },
+  {
+    path: '404',
+    component: NotfoundComponent,
+  },
   // {
   //   path: "404", component: NotfoundComponent
   // },
-  // {
-  //   path: '**', redirectTo: '/404' //qualsiasi cosa prende come redirect (mettere sempre per ultimo)
-  // }
+  {
+    path: '**', redirectTo: '/404' //qualsiasi cosa prende come redirect (mettere sempre per ultimo)
+  }
 ];
 
 @NgModule({

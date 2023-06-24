@@ -29,6 +29,8 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   today = Date.now()
   
+  name: string = '';
+  
   constructor(private testService: TestServiceService)
   {
 

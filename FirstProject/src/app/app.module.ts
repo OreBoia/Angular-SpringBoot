@@ -20,13 +20,20 @@ import { NotfoundComponent } from './comp/notfound/notfound.component';
 import { BookDetailComponent } from './comp/book-detail/book-detail.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+// import { MatDrawerModule } from '@angular/material/drawer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToolBarComponent } from './comp/tool-bar/tool-bar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
     NotfoundComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    ToolBarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,12 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    // MatDrawerModule,
+    BrowserAnimationsModule
+
   ],
   providers: [BookServiceService],
   bootstrap: [AppComponent]

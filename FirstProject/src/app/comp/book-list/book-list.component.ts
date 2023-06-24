@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Event, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -20,16 +21,27 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy{
   @Input() selectedBooksInput: Book[] = []
 
   totalPrice: number = 0;
+
   private subscription!: Subscription;
+
+  currentUrl: string = '';
+  showFiller: boolean = false;
+  showThirdColumn: boolean = false;
   
   constructor(private bookService: BookServiceService, 
               private route: ActivatedRoute,
-              private router: Router){}
+              private router: Router,
+              private location: LocationStrategy){}
   
   foundBook: Book = this.bookService.defaultBook;
 
   ngOnInit(): void 
   {
+    this.currentUrl = this.router.url;//this.location.path()
+
+    //debug currentUrl
+    console.log(this.currentUrl);
+
     this.bookList = this.bookService.getBooks()
 
     this.subscription = this.bookService.totalPriceChanged.subscribe(
@@ -41,7 +53,7 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy{
 
   ngOnChanges(changes: SimpleChanges): void 
   {
-    
+
   }
 
   ngOnDestroy(): void 

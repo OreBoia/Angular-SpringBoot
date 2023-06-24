@@ -1,0 +1,15 @@
+$background-color: rgb(158, 36, 19);
+$color: #000000;
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color;
+    color: $color;
+    margin-bottom: 4px;
+}

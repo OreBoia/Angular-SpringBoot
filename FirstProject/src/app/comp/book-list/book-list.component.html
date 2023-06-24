@@ -1,18 +1,10 @@
-<!-- <div>
-    <ul>
-        <li *ngFor="let book of bookList">{{book.id}} - <a routerLink="{{book.id}}">{{book.title}}</a> - {{book.rating}}</li>
-    </ul>
-</div>
-<div>
-    <mat-label>nome</mat-label>
-    <input matInput type="name" name="title" [(ngModel)]="titleToSearch">
-    <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
-</div>
-<p>BOOK SEARCHED IS {{foundBook.title}}</p> -->
-<div class="serach-bar">
-  <mat-label>Title</mat-label>
+
+<div class="search-bar">
+
   <input matInput type="name" name="search" [(ngModel)]="titleToSearch" (keydown)="onClick()">
-  <button mat-raised-button color="primary" type="submit" (click)="onClick()">search</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onClick()">
+    <mat-icon style="align-self: center; margin-right: 0px; padding-right: 0px;">search</mat-icon>
+  </button>
 </div>
 
 <div class="grid-container">
@@ -27,14 +19,31 @@
 
   <div class="grid-item"><router-outlet></router-outlet></div>
 
-  <div class="grid-item">
-    <p>Cart</p>
-    <div *ngFor="let book of selectedBooks">
-        {{ book.title }} - {{ book.price }}
-    </div>
-    <!-- a function to calculate the total price of the selected books -->
-    <p>Total price: {{totalPrice}}</p>
-    
+  <div class="grid-item" *ngIf="showThirdColumn">
+    <mat-drawer-container class="example-container" autosize>
+      <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+          Toggle extra text
+        </button>
+      </mat-drawer>
+    </mat-drawer-container>
   </div>
-
 </div>
+
+<!-- <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+</mat-drawer-container>
+
+<div class="example-sidenav-content">
+  <button type="button" mat-button (click)="drawer.toggle()">
+    Toggle sidenav
+  </button>
+</div> -->

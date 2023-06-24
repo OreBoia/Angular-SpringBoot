@@ -88,7 +88,8 @@ export class BookServiceService implements OnChanges{
     this.setTotalPrice(this.totalPrice);
   }
   
-  setTotalPrice(newTotalPrice: number) {
+  setTotalPrice(newTotalPrice: number) 
+  {
     this.totalPrice = newTotalPrice;
     this.totalPriceChanged.next(this.totalPrice);
   }
