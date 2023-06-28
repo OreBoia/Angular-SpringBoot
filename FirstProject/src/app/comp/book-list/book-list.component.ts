@@ -39,7 +39,6 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy{
   {
     this.currentUrl = this.router.url;//this.location.path()
 
-    //debug currentUrl
     console.log(this.currentUrl);
 
     this.bookList = this.bookService.getBooks()
@@ -51,16 +50,7 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy{
     );
   }
 
-  ngOnChanges(changes: SimpleChanges): void 
-  {
-
-  }
-
-  ngOnDestroy(): void 
-  {
-    this.subscription.unsubscribe()
-  }
-  
+  ngOnChanges(changes: SimpleChanges): void {}
 
   onClick()
   {
@@ -69,12 +59,13 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy{
     this.router.navigate(['/booklist', this.foundBook.id])
   }      
 
-  updateTotalPrice(book : Book, event: boolean) {
-    
+  updateTotalPrice(book : Book, event: boolean) 
+  {
     this.bookService.updateCartList(book, event)
-
-    // this.totalPrice = this.bookService.totalPrice
-   
   }
 
+  ngOnDestroy(): void 
+  {
+    this.subscription.unsubscribe()
+  }
 }

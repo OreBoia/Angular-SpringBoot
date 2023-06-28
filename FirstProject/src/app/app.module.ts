@@ -51,9 +51,7 @@ import { ToolBarComponent } from './comp/tool-bar/tool-bar.component';
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    // MatDrawerModule,
     BrowserAnimationsModule
-
   ],
   providers: [BookServiceService],
   bootstrap: [AppComponent]
